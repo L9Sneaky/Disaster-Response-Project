@@ -31,9 +31,9 @@ def load_data(database_filepath):
 
 def tokenize(text):
     # Convert to lowercase
-    text = text.lower() 
+    text = text.lower()
     # Remove punctuation characters
-    text = re.sub(r"[^a-zA-Z0-9]", " ", text) 
+    text = re.sub(r"[^a-zA-Z0-9]", " ", text)
     # Split text into words using NLTK
     words = word_tokenize(text)
     # Remove stop words
@@ -42,12 +42,12 @@ def tokenize(text):
     stemmed = [PorterStemmer().stem(w) for w in words]
 
     return stemmed
-    
+
 
 
 def build_model():
     pipeline = Pipeline([
-                ('vect', CountVectorizer(tokenizer=tokenize)),
+                ('vect', TfidfVectorizer(tokenizer=tokenize)),
                 ('clf', MultiOutputClassifier(estimator=LogisticRegression()))
                     ])
     return pipeline
@@ -70,13 +70,13 @@ def main():
         print('Loading data...\n    DATABASE: {}'.format(database_filepath))
         X, Y, category_names = load_data(database_filepath)
         X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size=0.2)
-        
+
         print('Building model...')
         model = build_model()
-        
+
         print('Training model...')
         model.fit(X_train, Y_train)
-        
+
         print('Evaluating model...')
         evaluate_model(model, X_test, Y_test, category_names)
 

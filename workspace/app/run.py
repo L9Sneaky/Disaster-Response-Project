@@ -1,7 +1,6 @@
 import json
 import plotly
 import pandas as pd
-import sklearn.linear_model.logisti
 from nltk.stem import WordNetLemmatizer
 from nltk.tokenize import word_tokenize
 from sklearn.linear_model import LogisticRegression
