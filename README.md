@@ -15,7 +15,7 @@
 <a name="descripton"></a>
 ## Description
 
-This Project is part of Data Science Nanodegree Program by Udacity in collaboration with Figure Eight.
+This Project is part of Data Science Nanodegree Program by Udacity.
 The initial dataset contains pre-labelled tweet and messages from real-life disaster. 
 The aim of the project is to build a Natural Language Processing tool that categorize messages.
 
